@@ -48,15 +48,15 @@ assert alumno1.mostrar_estado() == "regular"
 
 class RegistroAlumnoMateria:
     promedio = ()
+    pao = ()
     def __init__(self, nombre, materia): # Agregar parámetros
         self.nombre = nombre
         self.materia = materia 
         self.notas = []
+        
 
         """funcion que inicializa una variable registroAlumnoMateria"""
-        
-    def __str__(self)->None:
-        print(str(self.nombre)+ ":" + str(self.materia))
+    
 
     def agregar_nota(self,numero)-> list:
         self.notas.append(numero)
@@ -71,16 +71,22 @@ class RegistroAlumnoMateria:
         return promedio
         
 
-    def mostrar_estado(self): 
+    def mostrar_estado(self)-> str: 
         if self.promedio < 4 :
-            print("Estas libre")
+            return "Estas libre"
         elif self.promedio >= 7:
-            print("¡Promocion!")
+            return "¡Promocion!"
         else: 
-            print("Quedaste regular")
+            return "Quedaste regular"
+        
+    
+        
+
+    def __str__(self)->None:
+        print(str(self.nombre)+ "," + str(self.materia)+ "," + str(self.promedio))
 
 
-a = RegistroAlumnoMateria ("Bety", "Lengua")
+a = RegistroAlumnoMateria ("Bety","Lengua")
 a.agregar_nota(4)
 a.agregar_nota(9)
 a.agregar_nota(8)
@@ -90,5 +96,5 @@ a.calcular_promedio()
 a.__str__()
 a.mostrar_estado()
 
-"""assert alumno1.mostrar_estado() == "promocionado"
-assert alumno1.__str__() == "Juan, Matemáticas, promocionado"""
+assert a.mostrar_estado() == "¡Promocion!"
+

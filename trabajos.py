@@ -47,7 +47,7 @@ assert alumno1.mostrar_estado() == "regular"
     Condiciones: Nombre y materia tiene que ser texto, nota tiene que ser un entero (entre 0 y 10)"""
 
 class RegistroAlumnoMateria:
-    
+    promedio = ()
     def __init__(self, nombre, materia): # Agregar parámetros
         self.nombre = nombre
         self.materia = materia 
@@ -56,33 +56,39 @@ class RegistroAlumnoMateria:
         """funcion que inicializa una variable registroAlumnoMateria"""
         
     def __str__(self)->None:
-        return str(self.nombre)+ ", " + str(self.materia)
+        print(str(self.nombre)+ ":" + str(self.materia))
 
     def agregar_nota(self,numero)-> list:
         self.notas.append(numero)
-        listanotas = self.notas
-
-        return listanotas
+        return self.notas
 
     def mostrar_notas(self):
         print(self.notas)
 
     def calcular_promedio(self)->float:
-        promedio = sum(self.notas) / len(self.notas)
+        self.promedio = sum(self.notas) / len(self.notas)
+        promedio = self.promedio
         return promedio
+        
 
-    def mostrar_estado(sef)->str: 
-        """calcula si esta regular, promocionado, o libre
-        si saca menos de 4 de promedio , queda libre
-        Promocion promedio de 7 y todas las notas 6 o mas.
-        Sino Regular
-        """
-        pass
+    def mostrar_estado(self): 
+        if self.promedio < 4 :
+            print("Libre")
+        elif self.promedio >= 7:
+            print("¡Promocion!")
+        else: 
+            print("Regular")
 
 
-a = RegistroAlumnoMateria ("Enzo", "Lengua")
+a = RegistroAlumnoMateria ("Bety", "Lengua")
 a.agregar_nota(4)
 a.agregar_nota(9)
+a.agregar_nota(8)
+a.agregar_nota(10)
 a.mostrar_notas()
+a.calcular_promedio()
+a.__str__()
+a.mostrar_estado()
+
 """assert alumno1.mostrar_estado() == "promocionado"
 assert alumno1.__str__() == "Juan, Matemáticas, promocionado"""

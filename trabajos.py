@@ -73,11 +73,11 @@ class RegistroAlumnoMateria:
 
     def mostrar_estado(self): 
         if self.promedio < 4 :
-            print("Libre")
+            print("Estas libre")
         elif self.promedio >= 7:
             print("¡Promocion!")
         else: 
-            print("Regular")
+            print("Quedaste regular")
 
 
 a = RegistroAlumnoMateria ("Bety", "Lengua")

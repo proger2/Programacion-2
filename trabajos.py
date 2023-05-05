@@ -48,12 +48,12 @@ assert alumno1.mostrar_estado() == "regular"
 
 class RegistroAlumnoMateria:
     promedio = ()
-    pao = ()
+    
     def __init__(self, nombre, materia): # Agregar parámetros
         self.nombre = nombre
         self.materia = materia 
         self.notas = []
-        
+        self.resultado = ()
 
         """funcion que inicializa una variable registroAlumnoMateria"""
     
@@ -66,24 +66,20 @@ class RegistroAlumnoMateria:
         print(self.notas)
 
     def calcular_promedio(self)->float:
-        self.promedio = sum(self.notas) / len(self.notas)
-        promedio = self.promedio
-        return promedio
+        return  sum(self.notas) / len(self.notas)
+
         
 
     def mostrar_estado(self)-> str: 
-        if self.promedio < 4 :
+        if self.calcular_promedio() < 4 :
             return "Estas libre"
-        elif self.promedio >= 7:
+        elif self.calcular_promedio() >= 7:
             return "¡Promocion!"
         else: 
             return "Quedaste regular"
         
-    
-        
-
-    def __str__(self)->None:
-        print(str(self.nombre)+ "," + str(self.materia)+ "," + str(self.promedio))
+    def __str__(self):
+        return (f"{self.nombre},{self.materia},{self.mostrar_estado()}")
 
 
 a = RegistroAlumnoMateria ("Bety","Lengua")
@@ -92,9 +88,28 @@ a.agregar_nota(9)
 a.agregar_nota(8)
 a.agregar_nota(10)
 a.mostrar_notas()
-a.calcular_promedio()
-a.__str__()
-a.mostrar_estado()
+print(a)
+
 
 assert a.mostrar_estado() == "¡Promocion!"
 
+"""
+2.a* A la clase punto vista en la materia agregarle 
+el método Distancia al origen ()siendo el origen el punto (0,0). Crear un programa que 
+use este método para imprimir en pantalla
+ la distancia entre al origen de los puntos A, B y C.
+
+class puntovista:
+    def __init__ (self,punto):
+
+    def distanciaalorigen(self):
+        origen = (0,0)
+
+A = Punto(2,3)
+B = Punto(5,5)
+C = Punto(1,5)
+
+A.distancia(B)
+assert A.distancia_origen() == 3.605551275463989
+assert B.distancia_origen() == 7.0710678118654755
+assert C.distancia_origen() == 5.0990195135927845"""
